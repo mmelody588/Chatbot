@@ -7,7 +7,7 @@ import { Send } from "lucide-react";
 import Message from "@/app/components/Messages";
 
 export default function Home() {
-    const { messages, input, setInput, handleInputChange, handleSubmit } = useChat({
+    const { messages, input, handleInputChange, handleSubmit } = useChat({
         api: '/api/chat', // Ensure this matches the backend endpoint
     });
 
