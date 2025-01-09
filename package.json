@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "if [ \"$CI\" != \"true\" ]; then pnpm install; fi"
+    "postinstall": "node -e \"if (process.env.CI !== 'true') { require('child_process').execSync('pnpm install', { stdio: 'inherit' }); }\""
+
   },
   "dependencies": {
     "-": "^0.0.1",
