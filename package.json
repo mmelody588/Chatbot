@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "pnpm install",
+    "postinstall": "pnpm install"
   },
   "dependencies": {
     "-": "^0.0.1",
