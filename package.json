@@ -14,7 +14,7 @@
     "-": "^0.0.1",
     "@ai-sdk/openai": "^1.0.8",
     "@radix-ui/react-slot": "^1.1.1",
-    "@supabase/supabase-js": "^2.47.10",
+    "@supabase/supabase-js": "^2.47.12",
     "ai": "^4.0.26",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
