@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "pnpm install"
+    "postinstall": "if [ \"$VERCEL\" != \"1\" ]; then pnpm install; fi"
   },
   "dependencies": {
     "-": "^0.0.1",
