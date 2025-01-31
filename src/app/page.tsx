@@ -13,7 +13,7 @@ export default function Home() {
     // All hooks should be at the top level
     const router = useRouter();
     const [session, setSession] = useState<Session | null>(null);
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState<{ user_id: string; role: string; content: string }[]>([]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const formRef = useRef<HTMLFormElement>(null); // Always declare hooks unconditionally
