@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/app/lib/supabase";
 import { Send } from "lucide-react";
 import Message from "@/app/components/Messages";
-import { Session} from "@supabase/auth-js";
+import { Session } from "@supabase/auth-js";
 
 export default function Home() {
     // All hooks should be at the top level
@@ -101,7 +101,7 @@ export default function Home() {
         try {
             const { error: insertError } = await supabase.from("messages").insert(newMessage);
             if (insertError) {
-                console.error("Error inserting user message:", insertEerror.message);
+                console.error("Error inserting user message:", insertError.message);
                 return;
             }
 

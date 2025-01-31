@@ -13,7 +13,7 @@ const openai = new OpenAI({
 
 export async function POST(req: Request) {
     try {
-        const { messages} = await req.json();
+        const { messages } = await req.json();
 
         if(!Array.isArray(messages) || messages.length === 0) {
             return new Response("Invalid messages payload", { status: 400 });
