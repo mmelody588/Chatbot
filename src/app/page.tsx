@@ -9,11 +9,18 @@ import { Send } from "lucide-react";
 import Message from "@/app/components/Messages";
 import { Session } from "@supabase/auth-js";
 
+interface Message {
+    id: string;  // Ensure each message has an id
+    user_id: string;
+    role: "user" | "assistant";
+    content: string;
+}
+
 export default function Home() {
     // All hooks should be at the top level
     const router = useRouter();
     const [session, setSession] = useState<Session | null>(null);
-    const [messages, setMessages] = useState<{ user_id: string; role: string; content: string }[]>([]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const formRef = useRef<HTMLFormElement>(null); // Always declare hooks unconditionally
@@ -88,7 +95,8 @@ export default function Home() {
 
         if (!input.trim()) return;
 
-        const newMessage = {
+        const newMessage: Message = {
+            id: crypto.randomUUID(),
             user_id: session.user.id,
             role: "user",
             content: input.trim(),
@@ -118,6 +126,7 @@ export default function Home() {
             const data = await response.json();
 
             const assistantMessage = {
+                id: crypto.randomUUID(),
                 user_id: session.user.id,
                 role: "assistant",
                 content: data.choices[0]?.message?.content || "I'm sorry, I don't understand...",
@@ -159,8 +168,8 @@ export default function Home() {
             </header>
             <div className="flex flex-col h-[calc(100%-64px)]">
                 <div className="flex-1 overflow-y-auto px-4 py-2">
-                    {messages.map((message, index) => (
-                        <Message key={index} message={message}/>
+                    {messages.map((message) => (
+                        <Message key={message.id} message={message}/>
                     ))}
                 </div>
                 <form
