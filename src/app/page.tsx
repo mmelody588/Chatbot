@@ -130,7 +130,7 @@ export default function Home() {
                 user_id: session.user.id,
                 role: "assistant",
                 content: data.choices[0]?.message?.content || "I'm sorry, I don't understand...",
-            };
+            } as Message;
 
             const { error: responseError } = await supabase.from("messages").insert(assistantMessage);
             if (responseError) {
